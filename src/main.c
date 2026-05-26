@@ -3,6 +3,7 @@
 #include <gst/gst.h>
 #include "presentation/creator_view.h"
 #include "presentation/scanner_view.h"
+#include "presentation/theme_manager.h"
 
 static GtkStack *main_stack;
 static GtkWidget *btn_back;
@@ -75,6 +76,9 @@ static void activate(GtkApplication *app, gpointer user_data) {
     // إعداد شاشات التطبيق
     setup_creator_view(builder);
     setup_scanner_view(builder);
+    
+    // تحميل وتطبيق السمة المخصصة (Theme) والمراقبة الديناميكية
+    theme_manager_init();
 
     gtk_widget_show_all(GTK_WIDGET(window));
     gtk_widget_hide(btn_back); // إخفاء زر الرجوع في الشاشة الرئيسية
