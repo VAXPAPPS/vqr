@@ -30,7 +30,13 @@ static void activate(GtkApplication *app, gpointer user_data) {
     
     GtkBuilder *builder = gtk_builder_new();
     GError *error = NULL;
-    if (gtk_builder_add_from_file(builder, "ui/main.ui", &error) == 0) {
+    
+    const char *ui_path = "ui/main.ui";
+    if (!g_file_test(ui_path, G_FILE_TEST_EXISTS)) {
+        ui_path = "/usr/share/vqr/ui/main.ui";
+    }
+
+    if (gtk_builder_add_from_file(builder, ui_path, &error) == 0) {
         g_printerr("Error loading file: %s\n", error->message);
         g_clear_error(&error);
         return;
@@ -40,8 +46,13 @@ static void activate(GtkApplication *app, gpointer user_data) {
     gtk_window_set_application(GTK_WINDOW(window), app);
     
     // Load CSS
+    const char *css_path = "ui/style.css";
+    if (!g_file_test(css_path, G_FILE_TEST_EXISTS)) {
+        css_path = "/usr/share/vqr/ui/style.css";
+    }
+
     GtkCssProvider *css_provider = gtk_css_provider_new();
-    if (gtk_css_provider_load_from_path(css_provider, "ui/style.css", &error)) {
+    if (gtk_css_provider_load_from_path(css_provider, css_path, &error)) {
         gtk_style_context_add_provider_for_screen(
             gdk_screen_get_default(),
             GTK_STYLE_PROVIDER(css_provider),

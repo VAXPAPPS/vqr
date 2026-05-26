@@ -1,0 +1,108 @@
+window {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.title-label {
+    font-size: 42px;
+    font-weight: 900;
+    color: #cdd6f4;
+    letter-spacing: 2px;
+}
+
+.subtitle-label {
+    font-size: 16px;
+    color: #a6adc8;
+}
+
+button.primary-button {
+    background-color: #89b4fa;
+    color: #11111b;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 4px 10px rgba(137, 180, 250, 0.3);
+    transition: all 0.2s ease-in-out;
+}
+
+button.primary-button:hover {
+    background-color: #b4befe;
+    box-shadow: 0 6px 14px rgba(137, 180, 250, 0.5);
+}
+
+button.primary-button:active {
+    background-color: #74c7ec;
+    box-shadow: none;
+}
+
+button.secondary-button {
+    background-color: #f38ba8;
+    color: #11111b;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 4px 10px rgba(243, 139, 168, 0.3);
+    transition: all 0.2s ease-in-out;
+}
+
+button.secondary-button:hover {
+    background-color: #f5c2e7;
+    box-shadow: 0 6px 14px rgba(243, 139, 168, 0.5);
+}
+
+button.secondary-button:active {
+    background-color: #eba0ac;
+    box-shadow: none;
+}
+
+.input-label {
+    font-size: 18px;
+    color: #cdd6f4;
+    font-weight: bold;
+}
+
+.input-textview {
+    background-color: #313244;
+    color: #cdd6f4;
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #45475a;
+}
+
+.action-button {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #cdd6f4;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.action-button:hover {
+    background-color: rgba(0, 0, 0, 0.503);
+}
+
+.back-button {
+    background-color: transparent;
+    color: #f38ba8;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #f38ba8;
+    padding: 6px 16px;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #f38ba8;
+    color: #11111b;
+}
+
+.qr-canvas {
+    background-color: #000000;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}

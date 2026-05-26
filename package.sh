@@ -12,6 +12,7 @@ mkdir -p "$DEB_DIR/DEBIAN"
 mkdir -p "$DEB_DIR/usr/bin"
 mkdir -p "$DEB_DIR/usr/share/applications"
 mkdir -p "$DEB_DIR/usr/share/icons/hicolor/scalable/apps"
+mkdir -p "$DEB_DIR/usr/share/vqr"
 
 # Compile application
 echo "Building binary..."
@@ -21,6 +22,7 @@ make
 echo "Copying files..."
 cp "$APP_NAME" "$DEB_DIR/usr/bin/"
 cp "${APP_NAME}.desktop" "$DEB_DIR/usr/share/applications/"
+cp -r "ui" "$DEB_DIR/usr/share/vqr/"
 if [ -f "vqr.svg" ]; then
     cp "vqr.svg" "$DEB_DIR/usr/share/icons/hicolor/scalable/apps/"
     echo "Icon included successfully."
