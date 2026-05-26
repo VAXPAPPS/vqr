@@ -2,7 +2,7 @@
 
 # Define variables
 APP_NAME="vqr"
-VERSION="1.0.0"
+VERSION="0.1.0"
 ARCH="amd64"
 DEB_DIR="build_deb/${APP_NAME}_${VERSION}_${ARCH}"
 
@@ -11,6 +11,7 @@ echo "Creating directory structure..."
 mkdir -p "$DEB_DIR/DEBIAN"
 mkdir -p "$DEB_DIR/usr/bin"
 mkdir -p "$DEB_DIR/usr/share/applications"
+mkdir -p "$DEB_DIR/usr/share/icons/hicolor/scalable/apps"
 
 # Compile application
 echo "Building binary..."
@@ -20,6 +21,12 @@ make
 echo "Copying files..."
 cp "$APP_NAME" "$DEB_DIR/usr/bin/"
 cp "${APP_NAME}.desktop" "$DEB_DIR/usr/share/applications/"
+if [ -f "vqr.svg" ]; then
+    cp "vqr.svg" "$DEB_DIR/usr/share/icons/hicolor/scalable/apps/"
+    echo "Icon included successfully."
+else
+    echo "Warning: vqr.svg not found in the current directory."
+fi
 
 # Create control file
 echo "Generating DEBIAN/control..."

@@ -1,0 +1,9 @@
+Package: vqr
+Version: 0.1.0
+Section: utils
+Priority: optional
+Architecture: amd64
+Depends: libgtk-3-0, libqrencode4, libzbar0, libgstreamer1.0-0, libgstreamer-plugins-base1.0-0, gstreamer1.0-plugins-good, gstreamer1.0-plugins-base, libcairo2
+Maintainer: Aether OS Developer
+Description: Professional QR Code Scanner and Creator.
+ A fast, clean architecture based application to generate and scan QR codes from images or webcams.
