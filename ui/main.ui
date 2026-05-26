@@ -260,11 +260,27 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btn_copy_result">
-                        <property name="label" translatable="yes">نسخ النتيجة</property>
+                      <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="height_request">50</property>
-                        <style><class name="action-button"/></style>
+                        <property name="spacing">10</property>
+                        <child>
+                          <object class="GtkButton" id="btn_copy_result">
+                            <property name="label" translatable="yes">نسخ النتيجة</property>
+                            <property name="visible">True</property>
+                            <property name="expand">True</property>
+                            <property name="height_request">50</property>
+                            <style><class name="action-button"/></style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="btn_execute_action">
+                            <property name="label" translatable="yes">تنفيذ الإجراء</property>
+                            <property name="visible">False</property>
+                            <property name="expand">True</property>
+                            <property name="height_request">50</property>
+                            <style><class name="primary-button"/></style>
+                          </object>
+                        </child>
                       </object>
                     </child>
                   </object>
