@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <object class="GtkWindow" id="main_window">
+    <property name="title" translatable="yes">VQR - QR Scanner &amp; Creator</property>
+    <property name="default_width">900</property>
+    <property name="default_height">650</property>
+    <property name="window_position">center</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="orientation">vertical</property>
+        
+        <!-- Header Bar -->
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="orientation">horizontal</property>
+            <property name="margin">15</property>
+            <child>
+              <object class="GtkButton" id="btn_back">
+                <property name="label" translatable="yes">← رجوع</property>
+                <property name="visible">False</property>
+                <style><class name="back-button"/></style>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+        
+        <!-- Stack for Pages -->
+        <child>
+          <object class="GtkStack" id="main_stack">
+            <property name="visible">True</property>
+            <property name="transition_type">slide-left-right</property>
+            
+            <!-- Page: Home -->
+            <child>
+              <object class="GtkBox" id="page_home">
+                <property name="visible">True</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">20</property>
+                <property name="margin">40</property>
+                <property name="valign">center</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">VQR</property>
+                    <style><class name="title-label"/></style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes">أداة احترافية لإنشاء ومسح رموز الاستجابة السريعة</property>
+                    <style><class name="subtitle-label"/></style>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="halign">center</property>
+                    <property name="spacing">30</property>
+                    <property name="margin_top">50</property>
+                    <child>
+                      <object class="GtkButton" id="btn_nav_creator">
+                        <property name="label" translatable="yes">إنشاء QR Code</property>
+                        <property name="visible">True</property>
+                        <property name="width_request">200</property>
+                        <property name="height_request">60</property>
+                        <style><class name="primary-button"/></style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btn_nav_scanner">
+                        <property name="label" translatable="yes">مسح QR Code</property>
+                        <property name="visible">True</property>
+                        <property name="width_request">200</property>
+                        <property name="height_request">60</property>
+                        <style><class name="secondary-button"/></style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="name">home</property>
+              </packing>
+            </child>
+            
+            <!-- Page: Creator -->
+            <child>
+              <object class="GtkBox" id="page_creator">
+                <property name="visible">True</property>
+                <property name="orientation">horizontal</property>
+                <property name="spacing">40</property>
+                <property name="margin">30</property>
+                
+                <!-- Left panel for input -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">15</property>
+                    <property name="width_request">350</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">أدخل النص أو الرابط:</property>
+                        <property name="halign">start</property>
+                        <style><class name="input-label"/></style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow">
+                        <property name="visible">True</property>
+                        <property name="height_request">150</property>
+                        <property name="shadow_type">in</property>
+                        <child>
+                          <object class="GtkTextView" id="txt_qr_input">
+                            <property name="visible">True</property>
+                            <property name="wrap_mode">word-char</property>
+                            <style><class name="input-textview"/></style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btn_generate">
+                        <property name="label" translatable="yes">إنشاء / تحديث الرمز</property>
+                        <property name="visible">True</property>
+                        <property name="height_request">50</property>
+                        <style><class name="primary-button"/></style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="spacing">15</property>
+                        <property name="margin_top">15</property>
+                        <child>
+                          <object class="GtkButton" id="btn_save_qr">
+                            <property name="label" translatable="yes">حفظ الصورة</property>
+                            <property name="visible">True</property>
+                            <property name="expand">True</property>
+                            <style><class name="action-button"/></style>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="btn_copy_qr">
+                            <property name="label" translatable="yes">نسخ للحافظة</property>
+                            <property name="visible">True</property>
+                            <property name="expand">True</property>
+                            <style><class name="action-button"/></style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                
+                <!-- Right panel for QR Display -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="expand">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <child>
+                      <object class="GtkDrawingArea" id="qr_drawing_area">
+                        <property name="visible">True</property>
+                        <property name="width_request">350</property>
+                        <property name="height_request">350</property>
+                        <style><class name="qr-canvas"/></style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="name">creator</property>
+              </packing>
+            </child>
+            
+            <!-- Page: Scanner -->
+            <child>
+              <object class="GtkBox" id="page_scanner">
+                <property name="visible">True</property>
+                <property name="orientation">horizontal</property>
+                <property name="spacing">40</property>
+                <property name="margin">30</property>
+                
+                <!-- Left Panel: Actions -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">20</property>
+                    <property name="width_request">300</property>
+                    
+                    <child>
+                      <object class="GtkButton" id="btn_upload_image">
+                        <property name="label" translatable="yes">استخراج من صورة</property>
+                        <property name="visible">True</property>
+                        <property name="height_request">60</property>
+                        <style><class name="primary-button"/></style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btn_start_camera">
+                        <property name="label" translatable="yes">مسح بالكاميرا</property>
+                        <property name="visible">True</property>
+                        <property name="height_request">60</property>
+                        <style><class name="secondary-button"/></style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                
+                <!-- Right Panel: Results -->
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">15</property>
+                    <property name="expand">True</property>
+                    
+                    <child>
+                      <object class="GtkImage" id="img_camera_preview">
+                        <property name="visible">False</property>
+                        <property name="width_request">350</property>
+                        <property name="height_request">350</property>
+                        <style><class name="qr-canvas"/></style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">النتيجة المستخرجة:</property>
+                        <property name="halign">start</property>
+                        <style><class name="input-label"/></style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkScrolledWindow">
+                        <property name="visible">True</property>
+                        <property name="expand">True</property>
+                        <property name="shadow_type">in</property>
+                        <child>
+                          <object class="GtkTextView" id="txt_scan_result">
+                            <property name="visible">True</property>
+                            <property name="wrap_mode">word-char</property>
+                            <property name="editable">False</property>
+                            <style><class name="input-textview"/></style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="btn_copy_result">
+                        <property name="label" translatable="yes">نسخ النتيجة</property>
+                        <property name="visible">True</property>
+                        <property name="height_request">50</property>
+                        <style><class name="action-button"/></style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="name">scanner</property>
+              </packing>
+            </child>
+            
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
