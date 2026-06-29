@@ -25,12 +25,12 @@ static void process_scan_result(const char *result) {
     if (strncmp(result, "http://", 7) == 0 || strncmp(result, "https://", 8) == 0) {
         current_action_type = 1;
         current_action_data = strdup(result);
-        gtk_button_set_label(GTK_BUTTON(btn_execute_action), "فتح الرابط 🌐");
+        gtk_button_set_label(GTK_BUTTON(btn_execute_action), "Open Link 🌐");
         gtk_widget_show(btn_execute_action);
     } else if (strncmp(result, "WIFI:", 5) == 0) {
         current_action_type = 2;
         current_action_data = strdup(result);
-        gtk_button_set_label(GTK_BUTTON(btn_execute_action), "نسخ كلمة المرور 🔑");
+        gtk_button_set_label(GTK_BUTTON(btn_execute_action), "Copy Password 🔑");
         gtk_widget_show(btn_execute_action);
     }
 }
@@ -56,7 +56,7 @@ static void on_execute_action_clicked(GtkButton *button, gpointer user_data) {
                 gtk_clipboard_set_text(clipboard, password, -1);
                 free(password);
                 
-                gtk_button_set_label(GTK_BUTTON(btn_execute_action), "تم النسخ! ✅");
+                gtk_button_set_label(GTK_BUTTON(btn_execute_action), "Copied! ✅");
             }
         }
     }
@@ -85,7 +85,7 @@ static gboolean update_qr_result(gpointer data) {
     
     stop_camera_scanner();
     gtk_widget_hide(img_camera_preview);
-    gtk_button_set_label(GTK_BUTTON(btn_start_camera), "مسح بالكاميرا");
+    gtk_button_set_label(GTK_BUTTON(btn_start_camera), "Scan with Camera");
     
     return G_SOURCE_REMOVE;
 }
@@ -98,16 +98,16 @@ static void on_camera_qr_found(const char *qr_text, void *user_data) {
 static void on_start_camera_clicked(GtkButton *button, gpointer user_data) {
     (void)user_data;
     const gchar *label = gtk_button_get_label(button);
-    if (g_strcmp0(label, "إيقاف الكاميرا") == 0) {
+    if (g_strcmp0(label, "Stop Camera") == 0) {
         stop_camera_scanner();
         gtk_widget_hide(img_camera_preview);
-        gtk_button_set_label(button, "مسح بالكاميرا");
+        gtk_button_set_label(button, "Scan with Camera");
         process_scan_result(NULL);
     } else {
-        gtk_button_set_label(button, "إيقاف الكاميرا");
+        gtk_button_set_label(button, "Stop Camera");
         gtk_widget_show(img_camera_preview);
         GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(txt_scan_result));
-        gtk_text_buffer_set_text(buffer, "جاري البحث عن QR Code...", -1);
+        gtk_text_buffer_set_text(buffer, "Searching for QR Code...", -1);
         process_scan_result(NULL);
         start_camera_scanner(on_camera_frame, on_camera_qr_found, NULL);
     }
@@ -117,11 +117,11 @@ static void on_upload_image_clicked(GtkButton *button, gpointer user_data) {
     (void)user_data;
     GtkWidget *window = gtk_widget_get_toplevel(GTK_WIDGET(button));
     
-    GtkWidget *dialog = gtk_file_chooser_dialog_new("اختر صورة",
+    GtkWidget *dialog = gtk_file_chooser_dialog_new("Select Image",
                                       GTK_WINDOW(window),
                                       GTK_FILE_CHOOSER_ACTION_OPEN,
-                                      "_إلغاء", GTK_RESPONSE_CANCEL,
-                                      "_فتح", GTK_RESPONSE_ACCEPT,
+                                      "_Cancel", GTK_RESPONSE_CANCEL,
+                                      "_Open", GTK_RESPONSE_ACCEPT,
                                       NULL);
                                       
     GtkFileFilter *filter = gtk_file_filter_new();
@@ -141,7 +141,7 @@ static void on_upload_image_clicked(GtkButton *button, gpointer user_data) {
             process_scan_result(result);
             free(result);
         } else {
-            gtk_text_buffer_set_text(buffer, "لم يتم العثور على QR Code في هذه الصورة.", -1);
+            gtk_text_buffer_set_text(buffer, "QR Code not found in this image.", -1);
             process_scan_result(NULL);
         }
         g_free(filename);

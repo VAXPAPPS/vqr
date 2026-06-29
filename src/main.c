@@ -61,7 +61,7 @@ static void activate(GtkApplication *app, gpointer user_data) {
         );
     }
     
-    // إعداد التنقل (Navigation)
+    // Setup Navigation
     main_stack = GTK_STACK(gtk_builder_get_object(builder, "main_stack"));
     btn_back = GTK_WIDGET(gtk_builder_get_object(builder, "btn_back"));
     
@@ -73,15 +73,15 @@ static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *btn_nav_scanner = GTK_WIDGET(gtk_builder_get_object(builder, "btn_nav_scanner"));
     g_signal_connect(btn_nav_scanner, "clicked", G_CALLBACK(on_nav_scanner), NULL);
 
-    // إعداد شاشات التطبيق
+    // Setup app screens
     setup_creator_view(builder);
     setup_scanner_view(builder);
     
-    // تحميل وتطبيق السمة المخصصة (Theme) والمراقبة الديناميكية
+    // Load and apply custom Theme and dynamic monitoring
     theme_manager_init();
 
     gtk_widget_show_all(GTK_WIDGET(window));
-    gtk_widget_hide(btn_back); // إخفاء زر الرجوع في الشاشة الرئيسية
+    gtk_widget_hide(btn_back); // Hide back button on main screen
     
     g_object_unref(builder);
     g_object_unref(css_provider);

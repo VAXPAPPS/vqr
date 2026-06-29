@@ -19,7 +19,7 @@
             <property name="margin">15</property>
             <child>
               <object class="GtkButton" id="btn_back">
-                <property name="label" translatable="yes">← رجوع</property>
+                <property name="label" translatable="yes">← Back</property>
                 <property name="visible">False</property>
                 <style><class name="back-button"/></style>
               </object>
@@ -55,7 +55,7 @@
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
-                    <property name="label" translatable="yes">أداة احترافية لإنشاء ومسح رموز الاستجابة السريعة</property>
+                    <property name="label" translatable="yes">Professional tool to generate and scan QR Codes</property>
                     <style><class name="subtitle-label"/></style>
                   </object>
                 </child>
@@ -67,7 +67,7 @@
                     <property name="margin_top">50</property>
                     <child>
                       <object class="GtkButton" id="btn_nav_creator">
-                        <property name="label" translatable="yes">إنشاء QR Code</property>
+                        <property name="label" translatable="yes">Generate QR Code</property>
                         <property name="visible">True</property>
                         <property name="width_request">200</property>
                         <property name="height_request">60</property>
@@ -76,7 +76,7 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="btn_nav_scanner">
-                        <property name="label" translatable="yes">مسح QR Code</property>
+                        <property name="label" translatable="yes">Scan QR Code</property>
                         <property name="visible">True</property>
                         <property name="width_request">200</property>
                         <property name="height_request">60</property>
@@ -109,7 +109,7 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">أدخل النص أو الرابط:</property>
+                        <property name="label" translatable="yes">Enter text or link:</property>
                         <property name="halign">start</property>
                         <style><class name="input-label"/></style>
                       </object>
@@ -130,7 +130,7 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="btn_generate">
-                        <property name="label" translatable="yes">إنشاء / تحديث الرمز</property>
+                        <property name="label" translatable="yes">Generate / Update Code</property>
                         <property name="visible">True</property>
                         <property name="height_request">50</property>
                         <style><class name="primary-button"/></style>
@@ -143,7 +143,7 @@
                         <property name="margin_top">15</property>
                         <child>
                           <object class="GtkButton" id="btn_save_qr">
-                            <property name="label" translatable="yes">حفظ الصورة</property>
+                            <property name="label" translatable="yes">Save Image</property>
                             <property name="visible">True</property>
                             <property name="expand">True</property>
                             <style><class name="action-button"/></style>
@@ -151,7 +151,7 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="btn_copy_qr">
-                            <property name="label" translatable="yes">نسخ للحافظة</property>
+                            <property name="label" translatable="yes">Copy to Clipboard</property>
                             <property name="visible">True</property>
                             <property name="expand">True</property>
                             <style><class name="action-button"/></style>
@@ -203,7 +203,7 @@
                     
                     <child>
                       <object class="GtkButton" id="btn_upload_image">
-                        <property name="label" translatable="yes">استخراج من صورة</property>
+                        <property name="label" translatable="yes">Extract from Image</property>
                         <property name="visible">True</property>
                         <property name="height_request">60</property>
                         <style><class name="primary-button"/></style>
@@ -211,7 +211,7 @@
                     </child>
                     <child>
                       <object class="GtkButton" id="btn_start_camera">
-                        <property name="label" translatable="yes">مسح بالكاميرا</property>
+                        <property name="label" translatable="yes">Scan with Camera</property>
                         <property name="visible">True</property>
                         <property name="height_request">60</property>
                         <style><class name="secondary-button"/></style>
@@ -239,7 +239,7 @@
                     <child>
                       <object class="GtkLabel">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">النتيجة المستخرجة:</property>
+                        <property name="label" translatable="yes">Extracted Result:</property>
                         <property name="halign">start</property>
                         <style><class name="input-label"/></style>
                       </object>
@@ -265,7 +265,7 @@
                         <property name="spacing">10</property>
                         <child>
                           <object class="GtkButton" id="btn_copy_result">
-                            <property name="label" translatable="yes">نسخ النتيجة</property>
+                            <property name="label" translatable="yes">Copy Result</property>
                             <property name="visible">True</property>
                             <property name="expand">True</property>
                             <property name="height_request">50</property>
@@ -274,7 +274,7 @@
                         </child>
                         <child>
                           <object class="GtkButton" id="btn_execute_action">
-                            <property name="label" translatable="yes">تنفيذ الإجراء</property>
+                            <property name="label" translatable="yes">Execute Action</property>
                             <property name="visible">False</property>
                             <property name="expand">True</property>
                             <property name="height_request">50</property>

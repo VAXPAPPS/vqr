@@ -31,7 +31,7 @@ char* scan_qr_from_image_file(const char *file_path) {
         for (int x = 0; x < width; x++) {
             guchar *p = pixels + y * rowstride + x * n_channels;
             if (n_channels == 4) {
-                // دمج القناة الشفافة مع خلفية بيضاء لتجنب تحول الشفافية إلى أسود
+                // Merge the alpha channel with a white background to avoid transparency turning black
                 float alpha = p[3] / 255.0f;
                 float r = (p[0] * alpha) + (255.0f * (1.0f - alpha));
                 float g = (p[1] * alpha) + (255.0f * (1.0f - alpha));
@@ -53,7 +53,7 @@ char* scan_qr_from_image_file(const char *file_path) {
     zbar_image_t *image = zbar_image_create();
     zbar_image_set_format(image, zbar_fourcc('Y','8','0','0'));
     zbar_image_set_size(image, width, height);
-    zbar_image_set_data(image, raw, raw_size, NULL); // نمرر NULL لأننا سنقوم بتنظيف الذاكرة يدوياً
+    zbar_image_set_data(image, raw, raw_size, NULL); // Pass NULL because we will clean up the memory manually
 
     int n = zbar_scan_image(scanner, image);
     char *result_str = NULL;
@@ -70,7 +70,7 @@ char* scan_qr_from_image_file(const char *file_path) {
 
     zbar_image_destroy(image);
     zbar_image_scanner_destroy(scanner);
-    free(raw); // تحرير الذاكرة هنا يدوياً لتجنب أي مشاكل مع zbar_image_free_data
+    free(raw); // Free memory manually here to avoid issues with zbar_image_free_data
 
     return result_str;
 }

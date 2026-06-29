@@ -4,12 +4,12 @@
 #include "models.h"
 #include <stdbool.h>
 
-// واجهة توليد رمز QR
+// QR Code generation interface
 typedef struct {
     bool (*generate_qr)(const char *data, int size, unsigned char **out_pixels, int *out_width);
 } QREncodeService;
 
-// واجهة مسح رمز QR
+// QR Code scanning interface
 typedef struct {
     char* (*scan_image)(const char *image_path);
 } QRScannerService;

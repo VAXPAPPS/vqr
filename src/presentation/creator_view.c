@@ -19,7 +19,7 @@ static gboolean draw_qr_callback(GtkWidget *widget, cairo_t *cr, gpointer data) 
 
     if (!current_qr_data || current_qr_width == 0) return FALSE;
 
-    // توفير مساحة حواف فارغة (Quiet Zone) بمقدار 4 وحدات على الأقل لضمان القراءة
+    // Provide a Quiet Zone margin of at least 4 units to ensure readability
     int module_size = MIN(width, height) / (current_qr_width + 8);
     if (module_size == 0) module_size = 1;
     int real_size = current_qr_width * module_size;
@@ -27,7 +27,7 @@ static gboolean draw_qr_callback(GtkWidget *widget, cairo_t *cr, gpointer data) 
     int pad_y = (height - real_size) / 2;
 
     cairo_set_source_rgb(cr, 0.0, 0.0, 0.0);
-    // إيقاف التنعيم (Anti-aliasing) للحصول على أطراف حادة للـ QR
+    // Disable Anti-aliasing to get sharp edges for the QR
     cairo_set_antialias(cr, CAIRO_ANTIALIAS_NONE);
     for (int y = 0; y < current_qr_width; y++) {
         for (int x = 0; x < current_qr_width; x++) {
@@ -64,11 +64,11 @@ static void on_save_clicked(GtkButton *button, gpointer user_data) {
     if (!current_qr_data) return;
 
     GtkWidget *window = gtk_widget_get_toplevel(GTK_WIDGET(button));
-    GtkWidget *dialog = gtk_file_chooser_dialog_new("حفظ الصورة",
+    GtkWidget *dialog = gtk_file_chooser_dialog_new("Save Image",
                                       GTK_WINDOW(window),
                                       GTK_FILE_CHOOSER_ACTION_SAVE,
-                                      "_إلغاء", GTK_RESPONSE_CANCEL,
-                                      "_حفظ", GTK_RESPONSE_ACCEPT,
+                                      "_Cancel", GTK_RESPONSE_CANCEL,
+                                      "_Save", GTK_RESPONSE_ACCEPT,
                                       NULL);
                                       
     GtkFileChooser *chooser = GTK_FILE_CHOOSER(dialog);

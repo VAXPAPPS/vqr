@@ -6,7 +6,7 @@
 bool generate_qr_code(const char *text, unsigned char **out_data, int *out_width) {
     if (!text || !out_data || !out_width) return false;
 
-    // استخدام مستوى تصحيح M، ونمط 8-bit
+    // Use correction level M, and 8-bit mode
     QRcode *qr = QRcode_encodeString(text, 0, QR_ECLEVEL_M, QR_MODE_8, 1);
     if (!qr) return false;
 
@@ -19,7 +19,7 @@ bool generate_qr_code(const char *text, unsigned char **out_data, int *out_width
         return false;
     }
 
-    // استخراج النقاط السوداء فقط
+    // Extract black points only
     for (int i = 0; i < size; i++) {
         (*out_data)[i] = qr->data[i] & 1; 
     }

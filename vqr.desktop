@@ -7,5 +7,5 @@ Icon=vqr
 Terminal=false
 Type=Application
 Categories=Utility;Office;Graphics;
-Keywords=qr;barcode;scanner;reader;generator;qrcode;كيو ار;باركود;
+Keywords=qr;barcode;scanner;reader;generator;qrcode;
 MimeType=image/png;image/jpeg;image/jpg;
