@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=0.1.0
+Name=VQR
+Comment=Professional QR Code Scanner and Creator
+Exec=/usr/bin/vqr
+Icon=vqr
+Terminal=false
+Type=Application
+Categories=Utility;Office;Graphics;
+Keywords=qr;barcode;scanner;reader;generator;qrcode;
+MimeType=image/png;image/jpeg;image/jpg;
